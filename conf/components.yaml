@@ -1,4 +1,10 @@
 # ordered list, smallest to largest
+name: unit
+aliases:
+    - level
+    - staircase
+    - entrance
+---
 name: house_number
 aliases:
     - street_number
@@ -11,6 +17,7 @@ aliases:
     - isolated_dwelling
     - farmland
     - allotments
+    - po_box
 ---
 name: road
 aliases:

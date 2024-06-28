@@ -268,3 +268,29 @@ expected:  |
     Homestead Trailer Park
     Homestead, FL 33030
     United States of America
+---
+description: unit
+components:
+    city: Tampa
+    country: United States of America
+    country_code: us
+    house_number: 1099
+    postcode: 33602
+    road: Treasure St
+    state: Florida
+    unit: Apt 600
+expected:  |
+    1099 Treasure St Apt 600
+    Tampa, FL 33602
+    United States of America
+---
+description: po_box
+components:
+    city: Austin
+    country_code: us
+    po_box: PO Box 304
+    postcode: 78701
+    state: TX
+expected: |
+    PO Box 304
+    Austin, TX 78701

@@ -1,3 +1,27 @@
+# Why fork?
+
+OpenCageDate/address-formatting does not support (and does not seem to plan to support) postal address features like
+units, PO boxes, etc. We augment the formatting model to include this.
+
+## Run tests locally
+
+### First time set-up
+
+You will need to install the `Geo::Address::Formatter` the first time you set up to run tests
+
+```zsh
+cpan
+> install Geo::Address::Formatter
+```
+
+###
+
+```zsh
+perl bin/run_tests.t
+````
+
+The repository's original README is retained below:
+
 # address formatting
 
 ### Overview
