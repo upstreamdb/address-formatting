@@ -306,7 +306,7 @@ IE:
     WD: County Waterford
     WH: County Westmeath
     WW: County Wicklow
-    WX: County Wexford    
+    WX: County Wexford
 IT:
     # Italian Province abbreviations
     # https://en.wikipedia.org/wiki/Provinces_of_Italy
@@ -377,7 +377,7 @@ IT:
     MS: Massa-Carrara
     MT: Matera
     NA: Napoli
-    NO: Novara
+    "NO": Novara
     NU: Nuoro
     OG: Ogliastra
     OR: Oristano

@@ -56,7 +56,7 @@ expected:  |
     10178 Berlin
     Germany
 ---
-description: Köln, NRW 
+description: Köln, NRW
 components:
     country: Germany
     country_code: de
@@ -247,7 +247,7 @@ components:
         country: Germany
         country_code: de
         house_number: 29A
-        local_administrative_area: Pankow        
+        local_administrative_area: Pankow
         neighbourhood: Kollwitzkiez
         postcode: 10405
         road: Jablonskistraße
@@ -291,4 +291,20 @@ components:
     village: Oberhäslich
 expected:  |
     01744 Oberhäslich
+    Germany
+---
+#
+description: village and town (fallback)
+components:
+    country: Germany
+    country_code: de
+    county: Landkreis Schwäbisch Hall
+    municipality: Verwaltungsgemeinschaft Schwäbisch Hall
+    state: Baden-Württemberg
+    state_code: BW
+    town: Schwäbisch Hall
+    village: Tüngental
+expected:  |
+    Tüngental
+    Baden-Württemberg
     Germany
