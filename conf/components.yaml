@@ -24,7 +24,6 @@ aliases:
     - footway
     - street
     - street_name
-    - residential
     - path
     - pedestrian
     - road_reference
