@@ -289,11 +289,9 @@ AL:
         {{{attention}}}
         {{{house}}}
         {{{road}}} {{{house_number}}}
-        {{{postcode}}} {{#first}} {{{city}}} || {{{town}}} || {{{city_district}}} || {{{municipality}}} || {{{state_district}}} || {{{village}}} || {{{hamlet}}} {{/first}}
+        {{{postcode}}}
+        {{#first}} {{{city}}} || {{{town}}} || {{{city_district}}} || {{{municipality}}} || {{{state_district}}} || {{{village}}} || {{{hamlet}}} {{/first}}
         {{{country}}}
-    postformat_replace:
-        # fix the postcode to add - after numbers
-        - ["\n(\\d{4}) ([^,]*)\n","\n$1-$2\n"]
 
 # Armenia
 AM:
@@ -339,6 +337,8 @@ AS:
 # Austria
 AT:
     address_template: *generic1
+    replace:
+        - ["^Politischer Bezirk ",""]
 
 # Australia
 AU:
@@ -441,7 +441,7 @@ BR:
     address_template: |
         {{{attention}}}
         {{{house}}}
-        {{{road}}} {{{house_number}}}{{#first}}, {{{quarter}}}{{/first}}
+        {{{road}}}, {{{house_number}}}{{#first}}, {{{quarter}}}{{/first}}
         {{#first}} {{{suburb}}} || {{{city_district}}} || {{{village}}} || {{{hamlet}}}{{/first}}
         {{#first}} {{{city}}} || {{{town}}} || {{{state_district}}} {{/first}} - {{#first}} {{{state_code}}} || {{{state}}} {{/first}}
         {{{postcode}}}
@@ -710,10 +710,10 @@ DE:
         - ["^Ortsbeirat (\\d+) :",""]
         - ["^Gemeinde ",""]
         - ["^Gemeindeverwaltungsverband ",""]
-        - ["^Landkreis ",""]
-        - ["^Kreis ",""]
+        - ["county=Landkreis ",""]
+        - ["county=Kreis ",""]
         - ["^Grenze ",""]
-        - ["^Free State of ",""]
+        - ["state=Free State of ",""]
         - ["^Freistaat ",""]
         - ["^Regierungsbezirk ",""]
         - ["^Stadtgebiet ",""]
@@ -734,7 +734,8 @@ DJ:
 DK:
     address_template: *generic1
     replace:
-        - ["^Capital Region of ",""]
+        - ["state=Capital Region of Denmark","Capital Region"]
+        - ["^Region of ",""]
 
 # Dominica
 DM:
@@ -796,8 +797,8 @@ ES:
     fallback_template: *fallback4
 
     replace:
-        - ["Autonomous Community of the",""]
-        - ["Autonomous Community of",""]
+        - ["Autonomous Community of the ",""]
+        - ["Autonomous Community of ",""]
         - ["^Community of ",""]
 
 # Ethiopia
@@ -818,10 +819,15 @@ FK:
     change_country: Falkland Islands, United Kingdom
 
 # Federated States of Micronesia
+# uses US postal system, but not part of the US
 FM:
-    use_country: US
-    change_country: United States of America
-    add_component: state=Micronesia
+    address_template: *generic4
+    fallback_template: *fallback2
+    postformat_replace:
+        - ["PNI 96941","FM 96941"]
+        - ["TRK 96942","FM 96942"]
+        - ["YAP 96943","FM 96943"]
+        - ["KSA 96944","FM 96944"]
 
 # Faroe Islands
 FO:
@@ -841,7 +847,6 @@ FR:
         - ["\\(eaux territoriales\\)",""]
         - ["state= \\(France\\)$",""]
         - ["Paris (\\d+)(\\w+) Arrondissement$","Paris"]
-
 
 # Gabon
 GA:
@@ -1011,7 +1016,7 @@ HR:
 HT:
     address_template: *generic1
     postformat_replace:
-        - [" Commune de"," "]
+        - [" Commune de "," "]
 
 # Hungary
 # https://e-nyelv.hu/2014-09-19/lakcim/
@@ -1021,6 +1026,8 @@ HU:
         {{{postcode}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}}
         {{{road}}} {{{house_number}}}.
         {{{country}}}
+    postformat_replace:
+        - ["\n.\n","\n"]
 
 # Indonesia
 # https://en.wikipedia.org/wiki/Address_%28geography%29#Indonesia
@@ -1143,9 +1150,10 @@ IS:
 IT:
     address_template: *generic8
     replace:
-        - ["Città metropolitana di ",""]
-        - ["Metropolitan City of ",""]
-        - ["^Provincia di ",""]
+        - ["county=Provincia di ",""]
+        - ["county=Province of ",""]
+        - ["county=Città Metropolitana di ",""]
+        - ["county=Metropolitan City of ",""]
     postformat_replace:
         - ["Vatican City\nVatican City$","\nVatican City"]
         - ["Città del Vaticano\nCittà del Vaticano$","Città del Vaticano\n"]
@@ -1263,10 +1271,13 @@ KP:
 KR:
     address_template: |
         {{{country}}}
-        {{{state}}}
-        {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}}, {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}}, {{{road}}} {{{house_number}}}
+        {{{state}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}} {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}} {{{road}}} {{{house_number}}}
         {{{attention}}}
         {{{postcode}}}
+    fallback_template: |
+        {{{country}}}
+        {{{state}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}} {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}}
+        {{{attention}}}
 
 # South Korea - English
 KR_en:
@@ -1282,10 +1293,13 @@ KR_en:
 KR_ko:
     address_template: |
         {{{country}}}
-        {{{state}}}
-        {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}}, {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}}, {{{road}}} {{{house_number}}}
+        {{{state}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}} {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}} {{{road}}} {{{house_number}}}
         {{{attention}}}
         {{{postcode}}}
+    fallback_template: |
+        {{{country}}}
+        {{{state}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}} {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}}
+        {{{attention}}}
 
 # Kuwait
 KW:
@@ -1361,6 +1375,16 @@ MA:
 # Monaco
 MC:
     address_template: *generic3
+    fallback_template: |
+        {{{attention}}}
+        {{{house}}}
+        {{{road}}} {{{house_number}}}
+        {{{place}}}
+        {{#first}} {{{neighbourhood}}} || {{{city_district}}} || {{{municipality}}} || {{{suburb}}}{{/first}}
+        {{{city}}}
+        {{{country}}}
+    postformat_replace:
+        - ["Monaco\nMonaco","Monaco"]
 
 # Moldova
 MD:
@@ -1381,9 +1405,13 @@ MF:
     change_country: France
 
 # Marshall Islands
+# uses US postal system, but not part of the US
 MH:
-    use_country: US
-    add_component: state=Marshall Islands
+    address_template: *generic4
+    fallback_template: *fallback2
+    postformat_replace:
+        - [", 96060",", MH 96060"]
+        - [", 96070",", MH 96070"]
 
 # Madagascar
 MG:
@@ -1657,7 +1685,7 @@ PH:
         {{{attention}}}
         {{{house}}}
         {{{house_number}}} {{{road}}}, {{#first}}{{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}}{{/first}}, {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} || {{{suburb}}} || {{{state_district}}} {{/first}}
-        {{{postcode}}} {{#first}} {{{municipality}}} || {{{region}}} || {{{state}}} || {{/first}}
+        {{{postcode}}} {{#first}} {{{municipality}}} || {{{region}}} || {{{state}}} {{/first}}
         {{{country}}}
 
 # Pakistan
@@ -1792,7 +1820,6 @@ SG:
         {{{house}}}, {{{quarter}}}
         {{{house_number}}} {{{road}}}, {{{residential}}}
         {{#first}} {{{country}}} || {{{town}}} || {{{city}}} || {{{municipality}}} || {{{hamlet}}} || {{{village}}} || {{{county}}} {{/first}} {{{postcode}}}
-        {{{country}}}
 
 # Saint Helena, Ascension and Tristan da Cunha - same as UK
 SH:

@@ -1067,10 +1067,13 @@ GH:
     UW: Upper West
     WP: Western
 GL:
-    KU: Kommune Kujalleq
-    QA: Qaasuitsup Kommunia
-    QE: Qeqqata Kommunia
-    SM: Kommuneqarfik Sermersooq
+    AV: Avannaata
+    KU: Kujalleq
+    QA:
+      default: Qaasuitsup Kommunia
+      alt_en: Qaasuitsup
+    QE: Qeqqata
+    SM: Sermersooq
 GM:
     B: Banjul
     L: Lower River
@@ -1194,50 +1197,6 @@ HT:
     OU: Ouest
     SD: Sud
     SE: Sud-Est
-HU:
-    BA: Baranya
-    BC: Békéscsaba
-    BE: Békés
-    BK: Bács-Kiskun
-    BU: Budapest
-    BZ: Borsod-Abaúj-Zemplén
-    CS: Csongrád
-    DE: Debrecen
-    DU: Dunaújváros
-    EG: Eger
-    ER: Érd
-    FE: Fejér
-    GS: Győr‐Moson‐Sopron
-    GY: Győr
-    HB: Hajdú-Bihar
-    HE: Heves
-    HV: Hódmezővásárhely
-    JN: Jász-Nagykun-Szolnok
-    KE: Komárom-Esztergom
-    KM: Kecskemét
-    KV: Kaposvár
-    MI: Miskolc
-    NK: Nagykanizsa
-    "NO": Nógrád
-    NY: Nyíregyháza
-    PE: Pest
-    PS: Pécs
-    SD: Szeged
-    SF: Székesfehérvár
-    SH: Szombathely
-    SK: Szolnok
-    SN: Sopron
-    SO: Somogy
-    SS: Szekszárd
-    ST: Salgótarján
-    SZ: Szabolcs-Szatmár-Bereg
-    TB: Tatabánya
-    TO: Tolna
-    VA: Vas
-    VE: Veszprém
-    VM: Veszprém
-    ZA: Zala
-    ZE: Zalaegerszeg
 ID:
     AC: Aceh
     BA: Bali
@@ -2367,28 +2326,6 @@ SD:
     SI:
       default: سنار
       alt_en: Sennar State
-SE:
-    AB: Stockholms län
-    AC: Västerbottens län
-    BD: Norrbottens län
-    C: Uppsala län
-    D: Södermanlands län
-    E: Östergötlands län
-    F: Jönköpings län
-    G: Kronoborgs län
-    H: Kalmar län
-    I: Gotlands län
-    K: Blekinge län
-    M: Skåne län
-    N: Hallands län
-    O: Västra Götalands län
-    S: Värmlands län
-    T: Örebro län
-    U: Västmanlands län
-    W: Dalarnes län
-    X: Gävleborgs län
-    Y: Västernorrlands län
-    Z: Jämtlands län
 SH:
     AC: Ascension
     HL: Saint Helena

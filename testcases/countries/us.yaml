@@ -267,7 +267,7 @@ expected:  |
     Homestead, FL 33030
     United States of America
 ---
-description: unit
+description: unit (MA CUSTOM)
 components:
     city: Tampa
     country: United States of America
@@ -282,7 +282,7 @@ expected:  |
     Tampa, FL 33602
     United States of America
 ---
-description: po_box
+description: po_box (MA CUSTOM)
 components:
     city: Austin
     country_code: us
