@@ -105,3 +105,19 @@ components:
 expected:  |
     Lascelles VIC 3487
     Australia
+---
+description: unit (MA CUSTOM)
+components:
+    city: Melbourne
+    country: Australia
+    country_code: au
+    house_number: 12
+    postcode: 3065
+    road: Smith Street
+    state: Victoria
+    suburb: Fitzroy
+    unit: Unit 5
+expected:  |
+    Unit 5 12 Smith Street
+    Fitzroy VIC 3065
+    Australia

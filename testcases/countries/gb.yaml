@@ -286,3 +286,21 @@ expected:  |
     N1 4AZ
     United Kingdom
 
+---
+description: unit (MA CUSTOM)
+components:
+    city: London
+    country: United Kingdom
+    country_code: gb
+    house: Sunnyside House
+    house_number: 12
+    postcode: NW1 6XE
+    road: Baker Street
+    unit: Flat 3
+expected:  |
+    Flat 3
+    Sunnyside House
+    12 Baker Street
+    London
+    NW1 6XE
+    United Kingdom

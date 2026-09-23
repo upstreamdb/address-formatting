@@ -27,3 +27,17 @@ expected:  |
     Schärding
     Austria
 
+---
+description: unit (MA CUSTOM)
+components:
+    city: Salzburg
+    country: Austria
+    country_code: at
+    house_number: 5
+    postcode: 5020
+    road: Stauffenstraße
+    unit: Top 12
+expected:  |
+    Stauffenstraße 5 Top 12
+    5020 Salzburg
+    Austria

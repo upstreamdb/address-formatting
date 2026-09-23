@@ -31,7 +31,7 @@ generic3: &generic3 |
 generic4: &generic4 |
         {{{attention}}}
         {{{house}}}
-        {{{house_number}}} {{{road}}} {{unit}}
+        {{{house_number}}} {{{road}}} {{{unit}}}
         {{#first}} {{{village}}} || {{{hamlet}}} {{/first}}
         {{#first}} {{{city}}} || {{{town}}} || {{{state_district}}} || {{{suburb}}} || {{{municipality}}} || {{{county}}} {{/first}}, {{#first}} {{{state_code}}} || {{{state}}} {{/first}} {{{postcode}}}
         {{{country}}}
@@ -214,7 +214,7 @@ fallback1: &fallback1 |
 fallback2: &fallback2 |
         {{{attention}}}
         {{{house}}}
-        {{{road}}} {{{house_number}}} {{unit}}
+        {{{road}}} {{{house_number}}} {{{unit}}}
         {{{place}}}
         {{#first}} {{{suburb}}} || {{{village}}} || {{{hamlet}}} {{/first}}
         {{#first}} {{{city}}} || {{{town}}} || {{{municipality}}} || {{{county}}} || {{{island}}} || {{{state_district}}} {{/first}}, {{#first}} {{{state}}} || {{{state_code}}} {{/first}}
@@ -336,13 +336,26 @@ AS:
 
 # Austria
 AT:
-    address_template: *generic1
+    # generic1 plus unit after the house number (e.g. "Hauptstraße 12 Top 5") (MA CUSTOM)
+    address_template: |
+        {{{attention}}}
+        {{{house}}}
+        {{#first}} {{{road}}} || {{{place}}} || {{{hamlet}}} {{/first}} {{{house_number}}} {{{unit}}}
+        {{{postcode}}} {{#first}} {{{postal_city}}} || {{{town}}} || {{{city}}} || {{{village}}} || {{{municipality}}} || {{{hamlet}}} || {{{county}}} || {{{state}}} {{/first}}
+        {{{archipelago}}}
+        {{{country}}}
     replace:
         - ["^Politischer Bezirk ",""]
 
 # Australia
 AU:
-    address_template: *generic13
+    # generic13 plus unit before the house number (e.g. "Unit 5 12 Smith St") (MA CUSTOM)
+    address_template: |
+        {{{attention}}}
+        {{{house}}}
+        {{{unit}}} {{{house_number}}} {{{road}}}
+        {{#first}} {{{suburb}}} || {{{city_district}}} || {{{city}}} || {{{town}}} || {{{state_district}}} || {{{village}}} || {{{hamlet}}} || {{{region}}} {{/first}} {{#first}} {{{state_code}}} || {{{state}}} {{/first}} {{{postcode}}}
+        {{{country}}}
 
 # Aruba
 AW:
@@ -497,7 +510,7 @@ CA:
     address_template: |
         {{{attention}}}
         {{{house}}}
-        {{#first}} {{{house_number}}} {{{road}}} || {{{suburb}}} {{/first}}
+        {{#first}} {{{house_number}}} {{{road}}} {{{unit}}} || {{{suburb}}} {{/first}}
         {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} || {{{county}}} || {{{state_district}}} {{/first}}, {{#first}} {{{state_code}}} || {{{state}}} {{/first}} {{{postcode}}}
         {{{country}}}
     fallback_template: |
@@ -688,9 +701,11 @@ CZ:
 
 # Germany
 DE:
+    # Deutsche Post puts apartment/floor details on their own line above the street (MA CUSTOM)
     address_template: |
         {{{attention}}}
         {{{house}}}
+        {{{unit}}}
         {{#first}} {{{road}}} || {{{place}}} || {{{hamlet}}} {{/first}} {{{house_number}}}
         {{{postcode}}} {{#first}} {{{village}}} {{{postal_city}}} || {{{town}}} || {{{city}}} || {{{municipality}}} || {{{hamlet}}} || {{{county}}} || {{{state}}} {{/first}}
         {{{archipelago}}}
@@ -793,7 +808,13 @@ ER:
 
 # Spain
 ES:
-    address_template: *generic15
+    # generic15 plus floor/door after the house number (e.g. "Calle Mayor, 12, 3º B") (MA CUSTOM)
+    address_template: |
+        {{{attention}}}
+        {{{house}}}
+        {{{road}}}, {{{house_number}}}, {{{unit}}}
+        {{{postcode}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} || {{{municipality}}} || {{{state}}} || {{{county}}} {{/first}}
+        {{{country}}}
     fallback_template: *fallback4
 
     replace:
@@ -859,7 +880,16 @@ GA:
         {{{country}}}
 
 GB:
-    address_template: *generic23
+    # generic23 plus unit on its own line; Royal Mail orders sub-building ("Flat 3") before building name (MA CUSTOM)
+    address_template: |
+        {{{attention}}}
+        {{{unit}}}
+        {{{house}}}
+        {{{house_number}}} {{{road}}}
+        {{{quarter}}}
+        {{#first}} {{{village}}} || {{{town}}} || {{{city}}} || {{{municipality}}} || {{{hamlet}}} || {{{county}}} {{/first}}
+        {{{postcode}}}
+        {{#first}} {{{country}}} || {{{state}}} {{/first}}
     fallback_template: *fallback3
     replace:
         - ["village= CP$",""]
