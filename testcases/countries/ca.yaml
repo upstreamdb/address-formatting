@@ -136,3 +136,18 @@ components:
 expected:  |
     Greater Edmonton, Alberta
     Canada
+---
+description: unit (MA CUSTOM)
+components:
+    city: Ajax
+    country: Canada
+    country_code: ca
+    house_number: 132
+    postcode: L1T 3W5
+    road: Kingston Road West
+    state: Ontario
+    unit: Apt. 809
+expected:  |
+    132 Kingston Road West Apt. 809
+    Ajax, ON L1T 3W5
+    Canada

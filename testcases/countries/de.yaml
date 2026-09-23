@@ -308,3 +308,18 @@ expected:  |
     Tüngental
     Baden-Württemberg
     Germany
+---
+description: unit (MA CUSTOM)
+components:
+    city: Berlin
+    country: Germany
+    country_code: de
+    house_number: 5
+    postcode: 10115
+    road: Hauptstraße
+    unit: 3. OG links
+expected:  |
+    3. OG links
+    Hauptstraße 5
+    10115 Berlin
+    Germany

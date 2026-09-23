@@ -54,3 +54,17 @@ expected:  |
     Spanien
 
 
+---
+description: unit (MA CUSTOM)
+components:
+     city: Madrid
+     country: Spain
+     country_code: es
+     house_number: 12
+     postcode: "28013"
+     road: Calle Mayor
+     unit: 3º B
+expected:  |
+    Calle Mayor, 12, 3º B
+    28013 Madrid
+    Spain
