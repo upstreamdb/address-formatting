@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Why fork?
 
 OpenCageDate/address-formatting does not support (and does not seem to plan to support) postal address features like
