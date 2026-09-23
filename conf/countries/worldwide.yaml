@@ -1003,8 +1003,9 @@ HK:
         {{{attention}}}
         {{{house}}}
         {{{house_number}}} {{{road}}}
-        {{{state_district}}}
-        {{#first}} {{{state}}} || {{{country}}} {{/first}}
+        {{#first}} {{{state_district}}} || {{{region}}} {{/first}}
+        {{{state}}}
+        {{{country}}}
 
 # Hong Kong - English
 HK_en:
@@ -1012,7 +1013,7 @@ HK_en:
         {{{attention}}}
         {{{house}}}
         {{{house_number}}} {{{road}}}
-        {{{state_district}}}
+        {{#first}} {{{state_district}}} || {{{region}}} {{/first}}
         {{{state}}}
         {{{country}}}
 
@@ -1021,7 +1022,7 @@ HK_zh:
     address_template: |
         {{{country}}}
         {{{state}}}
-        {{{state_district}}}
+        {{#first}} {{{state_district}}} || {{{region}}} {{/first}}
         {{{road}}}
         {{{house_number}}}
         {{{house}}}
@@ -1336,8 +1337,7 @@ KW:
     address_template: |
         {{{attention}}}
         {{{house}}}
-        {{#first}} {{{suburb}}} || {{{city_district}}} || {{{neighbourhood}}} {{/first}}
-
+        {{#first}} {{{area}}} {{{city_block}}} || {{{neighbourhood}}} || {{{city_district}}} || {{{suburb}}} {{/first}}
         {{{road}}}
         {{{house_number}}} {{{house}}}
         {{{postcode}}} {{#first}} {{{city}}} || {{{town}}} || {{{village}}} || {{{hamlet}}} {{/first}}
